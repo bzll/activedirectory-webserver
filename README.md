@@ -4,11 +4,11 @@
 ```powershell
 # To install the AD module on Windows Server, run Install-WindowsFeature RSAT-AD-PowerShell
 # Create the security group
-New-ADGroup -Name "Docker Authorized Hosts" -SamAccountName "dockerHosts" -GroupScope DomainLocal -Path "OU=Teste,DC=domain";
+New-ADGroup -Name "Docker Authorized Hosts" -SamAccountName "dockerHosts" -GroupScope DomainLocal -Path "OU=Users,DC=domain";
 # Create the gMSA
 New-ADServiceAccount -Name "Docker" -DnsHostName "domain" -ServicePrincipalNames "host/docker", "host/domain" -PrincipalsAllowedToRetrieveManagedPassword "dockerHosts";
 # Add your container hosts to the security group
-Add-ADGroupMember -Identity "dockerHosts" -Members "DCC20000001$";
+Add-ADGroupMember -Identity "dockerHosts" -Members "HOSTNAME$";
 ```
 ### Setting up Container Host
 
