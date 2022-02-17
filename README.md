@@ -126,12 +126,12 @@ curl --request POST \
 	"path": "OU=Users,DC=domain"
 }'
 ```
-healh:
+health:
 ```sh
 curl --request GET \
   --url 'http://localhost:8080/health'
 ```
-heath ad connectivity:
+health ad connectivity:
 ```sh
 curl --request GET \
   --url http://localhost:8080/health/ad/connectivity
