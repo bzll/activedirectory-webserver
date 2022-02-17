@@ -10,9 +10,9 @@ New-ADServiceAccount -Name "Docker" -DnsHostName "domain" -ServicePrincipalNames
 # Add your container hosts to the security group
 Add-ADGroupMember -Identity "dockerHosts" -Members "DCC20000001$";
 ```
-### Configurando o Host Container
+### Setting up Container Host
 
-#### Instalação Docker e Docker-Compose
+#### Docker and Docker-Compose installation
 ```powershell
 # Change TLS version used by Poweshell client to TLS 1.2
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
