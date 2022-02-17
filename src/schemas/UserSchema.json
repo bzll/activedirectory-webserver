@@ -1,0 +1,146 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "examples": [
+                "Ciro Bizelli"
+            ],
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "user_name": {
+            "type": "string",
+            "examples": [
+                "ciro.bizelli"
+            ],
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "password": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 10
+        },
+        "manager": {
+            "type": "string",
+            "examples": [
+                "ciro.bizelli"
+            ],
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "description": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "logon_hours": {
+            "type": "integer"
+        },
+        "employee_id": {
+            "type": "string",
+            "pattern": "^[0-9]$",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "employee_number": {
+            "type": "string",
+            "pattern": "^([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})$",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "company": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "title": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "department": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "phone": {
+            "type": "string",
+            "pattern": "\\(\\d{2,}\\) \\d{4,}\\-\\d{4}",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "mobile": {
+            "type": "string",
+            "pattern": "\\(\\d{2,}\\) \\d{4,}\\-\\d{4}",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "home_page": {
+            "type": "string",
+            "default": "www.github.com",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "street_address": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "state": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2,
+            "pattern": "^[A-Z]{2}$"
+        },
+        "district": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "zip": {
+            "type": "string",
+            "pattern": "^[0-9]{2}.[0-9]{3}-[0-9]{3}$",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "city": {
+            "type": "string",
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "office": {
+            "type": "string",
+            
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "path": {
+            "type": "string",
+            "examples": [
+                "OU=Test,DC=domain"
+            ],
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "country": {
+            "type": "string",
+            "default": "BR",
+            "pattern": "^[A-Z]{2}$",
+            "$ref": "#/definitions/non-empty-string"
+        }
+    },
+    "required": [
+        "name",
+        "description",
+        "manager",
+        "employee_id",
+        "employee_number",
+        "title",
+        "department",
+        "company",
+        "phone",
+        "city",
+        "country",
+        "office",
+        "zip",
+        "street_address",
+        "state",
+        "path"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "non-empty-string": {
+            "type": "string",
+            "minLength": 1
+        }
+    }
+}

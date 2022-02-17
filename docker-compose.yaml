@@ -1,0 +1,14 @@
+
+version: '3'
+services:
+  ad-webserver:
+    container_name: ad-webserver
+    build:
+      context: .\src
+    image: ad-webserver:latest
+    hostname: Docker
+    security_opt:
+      - "credentialspec=file://domain_docker.json"
+    ports:
+      - "8080:8080"
+    restart: always

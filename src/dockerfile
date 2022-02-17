@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+LABEL maintainer "Ciro Bizelli <cirocbizelli@gmail.com>"
+
+WORKDIR c:\\lab
+
+RUN powershell.exe -Command Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+
+RUN scoop install git pwsh
+
+RUN pwsh.exe --Command Install-WindowsFeature RSAT-AD-PowerShell; \
+    Import-Module ActiveDirectory -Global -Force;
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=10m --timeout=5s \
+    CMD curl -f http://localhost:8080/health || exit 
+
+RUN git clone https://github.com/bzll/activedirectory-webserver.git .
+
+ENTRYPOINT ["pwsh.exe","-File",".\\src\\server.ps1"]
